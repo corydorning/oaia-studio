@@ -1,0 +1,16 @@
+{
+  "name": "oaia-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/launch.mjs open",
+    "manage": "node scripts/launch.mjs manage",
+    "test": "node --test tests/*.test.mjs",
+    "package": "node scripts/package.mjs"
+  },
+  "engines": {
+    "node": ">=22.2.0"
+  },
+  "version": "1.0.0",
+  "description": "A local macOS image studio with separate project studios and Keychain-backed OpenAI access."
+}

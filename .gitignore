@@ -1,0 +1,31 @@
+.runtime/
+.superpowers/
+outputs/
+dist/
+node_modules/
+.env
+.env.*
+*.env
+*.log
+__pycache__/
+*.pyc
+.DS_Store
+account.json
+credentials.json
+secrets.json
+*.pem
+*.key
+docs/spec.md
+docs/superpowers/
+# Local compatibility launchers from pre-release names.
+Open CIG.command
+Manage CIG Studios.command
+Restart CIG.command
+Stop CIG.command
+Configure CIG API Key.command
+Install CIG Skill.command
+Open Image Studio.command
+Manage Image Studios.command
+Restart Image Studio.command
+Stop Image Studio.command
+Configure API Key.command

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OAIA Studio</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body>
+ <header><div><h1 id="studio-name">OAIA Studio</h1><p>Native-resolution images, saved on the Mac running OAIA Studio.</p></div><div class="connection"><span id="connection-status" role="status">Checking setup…</span><button id="check" class="quiet">Check connection</button></div></header>
+ <main>
+  <section class="controls" aria-label="Image controls">
+   <form id="generate-form">
+    <label for="prompt">Describe your image</label>
+    <textarea id="prompt" rows="7" maxlength="32000" placeholder="A peaceful lakeside golf course at sunrise, reeds along the water, a small wooden dock…" required></textarea>
+    <div class="label-row"><label for="reference">Reference images <span class="muted">optional</span></label><button id="remove-reference" class="text-button" type="button" hidden>Clear all</button></div>
+    <input id="reference" type="file" accept="image/png,image/jpeg,image/webp" multiple><p class="hint">Add up to 16 images. PNG, JPEG or WebP · under 15 MB each · 50 MB total. Refer to their numbers in your prompt. More references can increase cost.</p><p id="reference-error" class="field-error" role="alert" hidden></p><div id="reference-list" aria-label="Selected reference images"></div>
+    <label for="model">Model</label><select id="model"></select><p id="model-note" class="hint"></p>
+    <div class="settings-row"><div><label for="size">Dimensions</label><select id="size"></select></div><div><label for="quality">Quality</label><select id="quality"></select></div></div>
+    <div id="custom-size" class="settings-row custom-size" hidden><div><label for="custom-width">Width (px)</label><input id="custom-width" type="number" min="16" max="3840" step="16" value="1328" inputmode="numeric"></div><div><label for="custom-height">Height (px)</label><input id="custom-height" type="number" min="16" max="3840" step="16" value="2880" inputmode="numeric"></div></div>
+    <p id="size-note" class="hint"></p>
+    <details class="cost"><summary>Cost estimate <span>varies by image</span></summary><p id="price-note"></p><p>Standard rates: $5 / million text input tokens, $8 / million reference-image tokens, $30 / million image output tokens.</p><a href="https://developers.openai.com/api/docs/models/gpt-image-2.5-flare" target="_blank" rel="noreferrer">OpenAI pricing ↗</a></details>
+    <p class="privacy">Generate sends your prompt and selected references to OpenAI. The key stays in the local backend.</p>
+    <button id="generate" class="primary" type="submit" disabled>Generate image</button>
+    <p id="form-status" class="hint" role="status" aria-live="polite"></p>
+    <button id="new-request" class="quiet" type="button" hidden>Start a new request</button>
+   </form>
+   <details class="setup"><summary>Credits &amp; setup</summary><p id="account-note">Credit balance is managed in OpenAI Billing; this app does not have live balance access.</p><p>OpenAI uses free credits first. Existing purchased credits can be used after those run out. This app cannot buy credits or enable recharge.</p><p>Every studio on this Mac shares the saved API key and credit balance. Each has its own history and one-image-at-a-time queue.</p><p id="key-note">The API key is stored in macOS Keychain as “Local Image Studio OpenAI API”.</p><p>For a one-day key, create a replacement before the old key expires. Open <strong>Configure OAIA API Key.command</strong> in the app folder, paste the replacement into its hidden prompt, then choose <strong>Check connection</strong>. All studios use the new saved key on their next request.</p><a href="https://platform.openai.com/settings/organization/billing/credit-grants" target="_blank" rel="noreferrer">OpenAI credits ↗</a> · <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer">API keys ↗</a></details>
+  </section>
+  <section class="workspace" aria-label="Image preview and saved images">
+   <div class="preview-heading"><h2 id="preview-title">Your next image</h2><span id="preview-status">Original PNG</span></div>
+   <div id="stage" class="stage"><div id="empty"><div class="frame-mark" aria-hidden="true"></div><h3>Start with an idea.</h3><p>Choose a size and generate one image.<br>The original file is saved automatically.</p></div><img id="result" alt="Generated image" hidden><div id="working" hidden><span class="spinner" aria-hidden="true"></span><h3>Creating your image…</h3><p>This can take several minutes. You can leave this page open or come back later.</p></div></div>
+   <div id="result-details" hidden><p id="dimensions"></p><p id="result-cost" class="hint"></p><div class="actions"><a id="download" class="primary" download>Download PNG</a><a id="settings-download" class="quiet" download>Settings</a><a id="prompt-download" class="quiet" download>Prompt</a></div><p id="saved-path" class="hint path"></p></div>
+   <div id="error" class="error" role="alert" hidden></div>
+   <section class="history"><div class="history-heading"><h2>Saved images</h2><span id="history-count"></span></div><p id="history-empty" class="muted">Your images and generation records will appear here.</p><div id="history-list"></div><p class="hint path" id="output-folder"></p></section>
+  </section>
+ </main>
+ <footer>Local network access · No password · No upscaling · One image per request · No automatic generation retries</footer>
+</body></html>
