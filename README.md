@@ -121,7 +121,13 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --repo corydorning/oaia-studio --path . --name oaia-studio --method download
 ```
 
-With `--path .`, the explicit `--name oaia-studio` is required. To add Claude Code afterward, run **Install OAIA Skill.command** from that installed package; it keeps the existing Codex installation and links Claude Code to it.
+With `--path .`, the explicit `--name oaia-studio` is required. To add Claude Code afterward, run:
+
+```sh
+node "${CODEX_HOME:-$HOME/.codex}/skills/oaia-studio/scripts/install-skill.mjs"
+```
+
+It keeps the existing Codex installation and links Claude Code to it. Codex's download-based installer does not preserve executable permissions on Finder launchers, so use the Node commands in that copy. The release ZIP preserves launcher permissions and is the recommended installation for browser use.
 
 Ask: **“Use OAIA Studio to generate one high-quality portrait in the Product Photos studio using these two reference images. Save the original PNG and its prompt/settings in this folder.”** Include any project-specific artwork rules and approval requirements in the request.
 

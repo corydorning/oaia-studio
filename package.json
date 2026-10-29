@@ -11,6 +11,6 @@
   "engines": {
     "node": ">=22.2.0"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A local macOS image studio with separate project studios and Keychain-backed OpenAI access."
 }
